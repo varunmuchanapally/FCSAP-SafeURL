@@ -1,0 +1,249 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light grey background */
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px 40px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+/* Search Bar */
+.search-bar form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 40px 0;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 16px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+}
+
+.search-bar input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.search-bar button {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: #0ea1eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-bar button:hover {
+    background-color: #0c88cc;
+}
+/* Button Group Styling */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Toggle Buttons Styling */
+.toggle-button {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: #0ea1eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.toggle-button:hover {
+    background-color: #0c88cc;
+}
+
+
+/* Results Page */
+.results-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0;
+}
+
+.results-list ul li {
+    background: #fff;
+    margin: 10px 0;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.results-list ul li strong {
+    color: #0ea1eb;
+}
+
+.back-button a {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #0ea1eb;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+}
+
+.back-button a:hover {
+    background-color: #0c88cc;
+}
+
+.chatgpt-analysis {
+    background: #f9f9f9;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.chatgpt-analysis h3 {
+    color: #0ea1eb;
+}
+.chatgpt-analysis p {
+    color: #333;
+    line-height: 1.6;
+}
+/* General Button Styles */
+.analysis-button {
+    padding: 15px 20px;
+    margin: 10px;
+    background-color: #0ea1eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.analysis-button:hover {
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Forms */
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input[type="text"] {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+form button {
+    padding: 15px 20px;
+    background-color: #0ea1eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #0c88cc;
+}
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.analysis-button {
+    padding: 15px 20px;
+    background-color: #0ea1eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.analysis-button:hover {
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+form input[type="text"] {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+form button {
+    padding: 15px 20px;
+    background-color: #0ea1eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    background-color: #0c88cc;
+}

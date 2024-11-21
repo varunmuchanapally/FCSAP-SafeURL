@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SafeURL : Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>SafeURL : URL Safety Checker</h1>
+    </header>
+    <main class="container">
+        {% if url2 is not defined %}
+            <h2>Results for "{{ url }}"</h2>
+            <div class="results-list">
+                <ul>
+                    <li><strong>HTTPS Check:</strong> {{ results['https_check'] }}</li>
+                    <li><strong>SSL Certificate Validation:</strong> {{ results['ssl_certificate'] }}</li>
+                    <li><strong>Geolocation:</strong> {{ results['geolocation'] }}</li>
+                    <li><strong>Google Safe Browsing Result:</strong> {{ results['url_reputation'] }}</li>
+                </ul>
+            </div>
+        {% else %}
+        <div class="results-list">
+            <h2>Comparative Results for "{{ url1 }}" and "{{ url2 }}"</h2>
+            <h3>First URL Results</h3>
+            <ul>
+                <li><strong>HTTPS Check:</strong> {{ results1['https_check'] }}</li>
+                <li><strong>SSL Certificate Validation:</strong> {{ results1['ssl_certificate'] }}</li>
+                <li><strong>Geolocation:</strong> {{ results1['geolocation'] }}</li>
+                <li><strong>Google Safe Browsing Result:</strong> {{ results1['url_reputation'] }}</li>
+            </ul>
+            <h3>Second URL Results</h3>
+            <ul>
+                <li><strong>HTTPS Check:</strong> {{ results2['https_check'] }}</li>
+                <li><strong>SSL Certificate Validation:</strong> {{ results2['ssl_certificate'] }}</li>
+                <li><strong>Geolocation:</strong> {{ results2['geolocation'] }}</li>
+                <li><strong>Google Safe Browsing Result:</strong> {{ results2['url_reputation'] }}</li>
+            </ul>
+        </div>
+        {% endif %}
+        <div class="chatgpt-analysis">
+            <h3>Analysis</h3>
+            <p>{{ chatgpt_analysis }}</p>
+        </div>
+        <div class="back-button">
+            <a href="/">Check Another URL</a>
+        </div>
+    </main>
+</body>
+</html>

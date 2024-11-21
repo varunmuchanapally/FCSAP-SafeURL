@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SafeURL : URL Safety Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        // JavaScript to toggle input forms
+        function toggleAnalysis(type) {
+            if (type === "single") {
+                document.getElementById("single-input").style.display = "block";
+                document.getElementById("comparative-input").style.display = "none";
+            } else if (type === "comparative") {
+                document.getElementById("single-input").style.display = "none";
+                document.getElementById("comparative-input").style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>SafeURL : URL Safety Checker</h1>
+    </header>
+    <main class="container">
+        <h2>Check Website Safety</h2>
+        
+        <!-- Buttons to toggle analysis type -->
+        <div class="button-group">
+            <button class="toggle-button" onclick="toggleAnalysis('single')">Single Website Analysis</button>
+            <button class="toggle-button" onclick="toggleAnalysis('comparative')">Comparative Analysis</button>
+        </div>
+        
+        <!-- Single Website Analysis Input -->
+        <div id="single-input" class="search-bar" style="display: none;">
+            <form method="POST" action="/">
+                <input type="hidden" name="analysis_type" value="single">
+                <input type="text" name="url" placeholder="Enter URL (e.g., https://example.com)" required>
+                <button type="submit">Check</button>
+            </form>
+            
+        </div>
+        
+        <!-- Comparative Analysis Input -->
+        <div id="comparative-input" class="search-bar" style="display: none;">
+            <form method="POST" action="/">
+                <input type="hidden" name="analysis_type" value="comparative">
+                <input type="text" name="url-1" placeholder="Enter First URL (e.g., https://example1.com)" required>
+                <input type="text" name="url-2" placeholder="Enter Second URL (e.g., https://example2.com)" required>
+                <button type="submit">Check</button>
+            </form>
+            
+        </div>
+    </main>
+</body>
+</html>
