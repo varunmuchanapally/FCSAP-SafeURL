@@ -105,7 +105,7 @@ def analyze_single_website(results):
     """
 
     #OpenAI API Key
-    openai.api_key = "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"
+    openai.api_key = "OPENAI_API_KEY"
     prompt = f"""
     Analyze the safety and security of the following website based on the provided details:
 
@@ -162,14 +162,14 @@ def analysis(url):
 
         #Geolocation Check
         try:
-            api_key = "283099e2878805a6b7ae1a3d95ace809"
+            api_key = "IPSTACK_API_KEY"
             results["geolocation"] = get_ip_geolocation(api_key, url)
         except Exception as e:
             results["geolocation"] = {"error": str(e)}
 
         #URL Reputation Check
         try:
-            key = "AIzaSyAgMWiMv1I32NbyIixHz29_KI5qON5DTA8"
+            key = "GOOGLE_SAFE_BROWSING_URL_API"
             results["url_reputation"] = check_url_reputation(key, url)
         except Exception as e:
             results["url_reputation"] = {"error": str(e)}
@@ -189,7 +189,7 @@ def comparitive_analysis(chatgpt_analysis1, chatgpt_analysis2, results1, results
     :param results2: Results dictionary for URL 2
     :return: Comparative analysis as a string
     """
-    openai.api_key = "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"
+    openai.api_key = "OPENAI_API_KEY"
     prompt = f"""
     Compare the safety and security of the following two websites based on their analyses and results:
 
