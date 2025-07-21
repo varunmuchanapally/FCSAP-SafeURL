@@ -36,14 +36,13 @@ cd safeurl-checker
 
 2. Create & Activate Environment
 
-bash
 python -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
 
 
 3. Install Dependencies
 
-bash
+
 pip install -r requirements.txt
 
 
@@ -57,7 +56,7 @@ key = "YOUR_GOOGLE_SAFE_BROWSING_API_KEY"
 
 5. Run the App
 
-bash
+
 python app.py
 
 
