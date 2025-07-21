@@ -89,8 +89,6 @@ safeurl-checker/
 │   └── styles.css
 │
 ├── app.py
-├── README.md
-└── requirements.txt
 
 
 
