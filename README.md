@@ -1,11 +1,7 @@
 # FCSAP-SafeURL
 
 
-Here’s a professional `README.md` for your **SafeURL: URL Safety Checker** Flask app. This includes sections for features, setup instructions, API keys, and usage.
 
----
-
-````markdown
  SafeURL: URL Safety Checker
 
 SafeURL is a Flask-based web application that analyzes the safety of a given website using multiple techniques such as:
