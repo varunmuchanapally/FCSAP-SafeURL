@@ -116,9 +116,7 @@ List of important packages:
 * socket / ssl / urllib
 * PyOpenSSL (if used)
 
-Install all with:
 
-pip install -r requirements.txt
 
 
 
