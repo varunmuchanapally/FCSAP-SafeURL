@@ -6,7 +6,7 @@ Here’s a professional `README.md` for your **SafeURL: URL Safety Checker** Fla
 ---
 
 ````markdown
-# 🔒 SafeURL: URL Safety Checker
+ SafeURL: URL Safety Checker
 
 SafeURL is a Flask-based web application that analyzes the safety of a given website using multiple techniques such as:
 
@@ -18,7 +18,7 @@ SafeURL is a Flask-based web application that analyzes the safety of a given web
 - GPT-4o-powered safety analysis and comparative assessments
 
 
-## 🚀 Features
+ 🚀 Features
 
 ✅ Single or Comparative website analysis  
 ✅ Real-time HTTPS and certificate verification  
@@ -27,59 +27,59 @@ SafeURL is a Flask-based web application that analyzes the safety of a given web
 ✅ Professional summary using GPT-4o (OpenAI)  
 ✅ Clean, mobile-friendly UI
 
----
 
-## 📸 Screenshots
+📸 Screenshots
 
-| Home Page | Results Page |
-|-----------|--------------|
-| ![Home](screenshots/home.png) | ![Results](screenshots/results.png) |
+![WhatsApp Image 2024-11-20 at 1 22 43 PM](https://github.com/user-attachments/assets/8c7f8cf0-e1f4-4687-aa99-1ec25e1855d3)
+![WhatsApp Image 2024-11-20 at 1 23 00 PM](https://github.com/user-attachments/assets/6b64d57e-b52c-4303-9b46-86bc46ad3321)
+![WhatsApp Image 2024-11-20 at 1 27 50 PM](https://github.com/user-attachments/assets/1558e970-500f-4a04-97a9-a0994d740ecd)
+![WhatsApp Image 2024-11-20 at 1 23 59 PM](https://github.com/user-attachments/assets/91aa8f15-ddd5-4bcd-8248-f25333caeea7)
+![WhatsApp Image 2024-11-20 at 1 24 12 PM](https://github.com/user-attachments/assets/6b718b34-c8ab-46d5-a9f4-442a96acec9a)
+![WhatsApp Image 2024-11-20 at 1 25 06 PM](https://github.com/user-attachments/assets/971ba87f-6eed-4244-bbe1-c637b9b96d51)
+![WhatsApp Image 2024-11-20 at 1 26 19 PM](https://github.com/user-attachments/assets/e4941b21-921b-4061-9821-76e5ee37a381)
+![WhatsApp Image 2024-11-20 at 1 26 51 PM](https://github.com/user-attachments/assets/5c25c5f8-d697-4bf5-b09a-da504397fe16)
+![WhatsApp Image 2024-11-20 at 1 27 31 PM](https://github.com/user-attachments/assets/396a3aac-dd7f-4ce3-b8e2-aa68273d669c)
 
----
 
-## ⚙️ Setup Instructions
 
-### 1. Clone the Repository
+⚙️ Setup Instructions
+1. Clone the Repository
 
-```bash
 git clone https://github.com/yourusername/safeurl-checker.git
 cd safeurl-checker
-````
 
-### 2. Create & Activate Environment
+2. Create & Activate Environment
 
-```bash
+bash
 python -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
 
-### 3. Install Dependencies
 
-```bash
+3. Install Dependencies
+
+bash
 pip install -r requirements.txt
-```
 
-### 4. Add Your API Keys
+
+4. Add Your API Keys
 
 In `app.py`, replace the placeholders with your actual API keys:
 
-```python
 openai.api_key = "YOUR_OPENAI_API_KEY"
 api_key = "YOUR_IPSTACK_API_KEY"
 key = "YOUR_GOOGLE_SAFE_BROWSING_API_KEY"
-```
 
-### 5. Run the App
+5. Run the App
 
-```bash
+bash
 python app.py
-```
+
 
 Then go to `http://127.0.0.1:5000` in your browser.
 
----
 
-## 🧠 Analysis Powered by OpenAI GPT-4o
+
+🧠 Analysis Powered by OpenAI GPT-4o
 
 SafeURL leverages OpenAI’s GPT-4o to produce:
 
@@ -87,11 +87,11 @@ SafeURL leverages OpenAI’s GPT-4o to produce:
 * Clear Safe/Unsafe decisions
 * Comparative summaries of two websites
 
----
 
-## 📁 Project Structure
 
-```
+📁 Project Structure
+
+
 safeurl-checker/
 │
 ├── templates/
@@ -104,11 +104,11 @@ safeurl-checker/
 ├── app.py
 ├── README.md
 └── requirements.txt
-```
 
----
 
-## 🔐 API Keys Required
+
+
+🔐 API Keys Required
 
 | Service                  | Use Case                      | Source                                                                                                                   |
 | ------------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
@@ -117,9 +117,9 @@ safeurl-checker/
 | IPStack API              | IP geolocation data           | [https://ipstack.com/](https://ipstack.com/)                                                                             |
 | WhoisXML API (Optional)  | Domain creation date analysis | [https://whois.whoisxmlapi.com/](https://whois.whoisxmlapi.com/)                                                         |
 
----
 
-## 📦 Dependencies
+
+📦 Dependencies
 
 List of important packages:
 
@@ -131,29 +131,28 @@ List of important packages:
 
 Install all with:
 
-```bash
 pip install -r requirements.txt
-```
 
----
 
-## 🛡 Disclaimer
+
+
+🛡 Disclaimer
 
 This tool is intended for educational and informational use. It does not guarantee complete website safety.
 
----
 
 
 
----
 
-## 📃 License
+
+
+📃 License
 
 [MIT License](LICENSE)
 
-```
 
----
+
+
 
 Let me know if you'd like:
 - A sample `requirements.txt`
@@ -161,14 +160,6 @@ Let me know if you'd like:
 - Screenshots or badges for GitHub
 
 Would you like me to create this `README.md` in a downloadable file too?
-```
 
-![WhatsApp Image 2024-11-20 at 1 22 43 PM](https://github.com/user-attachments/assets/8c7f8cf0-e1f4-4687-aa99-1ec25e1855d3)
-![WhatsApp Image 2024-11-20 at 1 23 00 PM](https://github.com/user-attachments/assets/6b64d57e-b52c-4303-9b46-86bc46ad3321)
-![WhatsApp Image 2024-11-20 at 1 27 50 PM](https://github.com/user-attachments/assets/1558e970-500f-4a04-97a9-a0994d740ecd)
-![WhatsApp Image 2024-11-20 at 1 23 59 PM](https://github.com/user-attachments/assets/91aa8f15-ddd5-4bcd-8248-f25333caeea7)
-![WhatsApp Image 2024-11-20 at 1 24 12 PM](https://github.com/user-attachments/assets/6b718b34-c8ab-46d5-a9f4-442a96acec9a)
-![WhatsApp Image 2024-11-20 at 1 25 06 PM](https://github.com/user-attachments/assets/971ba87f-6eed-4244-bbe1-c637b9b96d51)
-![WhatsApp Image 2024-11-20 at 1 26 19 PM](https://github.com/user-attachments/assets/e4941b21-921b-4061-9821-76e5ee37a381)
-![WhatsApp Image 2024-11-20 at 1 26 51 PM](https://github.com/user-attachments/assets/5c25c5f8-d697-4bf5-b09a-da504397fe16)
-![WhatsApp Image 2024-11-20 at 1 27 31 PM](https://github.com/user-attachments/assets/396a3aac-dd7f-4ce3-b8e2-aa68273d669c)
+
+
