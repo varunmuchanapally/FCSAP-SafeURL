@@ -1,7 +1,167 @@
 # FCSAP-SafeURL
 
 
-Make sure the HTML templates and the styles.css files are in the "templates" and "static" folders respectively. 
+Here’s a professional `README.md` for your **SafeURL: URL Safety Checker** Flask app. This includes sections for features, setup instructions, API keys, and usage.
+
+---
+
+````markdown
+# 🔒 SafeURL: URL Safety Checker
+
+SafeURL is a Flask-based web application that analyzes the safety of a given website using multiple techniques such as:
+
+- HTTPS validation
+- SSL/TLS certificate verification
+- IP and geolocation lookup
+- Google Safe Browsing API for reputation
+- Optional domain age check (via WHOIS API)
+- GPT-4o-powered safety analysis and comparative assessments
+
+
+## 🚀 Features
+
+✅ Single or Comparative website analysis  
+✅ Real-time HTTPS and certificate verification  
+✅ IP and geolocation tracking (via IPStack)  
+✅ Google Safe Browsing for malicious URL detection  
+✅ Professional summary using GPT-4o (OpenAI)  
+✅ Clean, mobile-friendly UI
+
+---
+
+## 📸 Screenshots
+
+| Home Page | Results Page |
+|-----------|--------------|
+| ![Home](screenshots/home.png) | ![Results](screenshots/results.png) |
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/safeurl-checker.git
+cd safeurl-checker
+````
+
+### 2. Create & Activate Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Add Your API Keys
+
+In `app.py`, replace the placeholders with your actual API keys:
+
+```python
+openai.api_key = "YOUR_OPENAI_API_KEY"
+api_key = "YOUR_IPSTACK_API_KEY"
+key = "YOUR_GOOGLE_SAFE_BROWSING_API_KEY"
+```
+
+### 5. Run the App
+
+```bash
+python app.py
+```
+
+Then go to `http://127.0.0.1:5000` in your browser.
+
+---
+
+## 🧠 Analysis Powered by OpenAI GPT-4o
+
+SafeURL leverages OpenAI’s GPT-4o to produce:
+
+* Detailed 250-word assessments per URL
+* Clear Safe/Unsafe decisions
+* Comparative summaries of two websites
+
+---
+
+## 📁 Project Structure
+
+```
+safeurl-checker/
+│
+├── templates/
+│   ├── index.html
+│   └── results.html
+│
+├── static/
+│   └── styles.css
+│
+├── app.py
+├── README.md
+└── requirements.txt
+```
+
+---
+
+## 🔐 API Keys Required
+
+| Service                  | Use Case                      | Source                                                                                                                   |
+| ------------------------ | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| OpenAI GPT-4o            | Website safety analysis       | [https://platform.openai.com/](https://platform.openai.com/)                                                             |
+| Google Safe Browsing API | URL reputation check          | [https://developers.google.com/safe-browsing/v4/get-started](https://developers.google.com/safe-browsing/v4/get-started) |
+| IPStack API              | IP geolocation data           | [https://ipstack.com/](https://ipstack.com/)                                                                             |
+| WhoisXML API (Optional)  | Domain creation date analysis | [https://whois.whoisxmlapi.com/](https://whois.whoisxmlapi.com/)                                                         |
+
+---
+
+## 📦 Dependencies
+
+List of important packages:
+
+* Flask
+* Requests
+* OpenAI
+* socket / ssl / urllib
+* PyOpenSSL (if used)
+
+Install all with:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 🛡 Disclaimer
+
+This tool is intended for educational and informational use. It does not guarantee complete website safety.
+
+---
+
+
+
+---
+
+## 📃 License
+
+[MIT License](LICENSE)
+
+```
+
+---
+
+Let me know if you'd like:
+- A sample `requirements.txt`
+- Deployment instructions (e.g., Render, Heroku)
+- Screenshots or badges for GitHub
+
+Would you like me to create this `README.md` in a downloadable file too?
+```
 
 ![WhatsApp Image 2024-11-20 at 1 22 43 PM](https://github.com/user-attachments/assets/8c7f8cf0-e1f4-4687-aa99-1ec25e1855d3)
 ![WhatsApp Image 2024-11-20 at 1 23 00 PM](https://github.com/user-attachments/assets/6b64d57e-b52c-4303-9b46-86bc46ad3321)
