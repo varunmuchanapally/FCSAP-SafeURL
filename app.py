@@ -1,3 +1,4 @@
+```python
 from flask import Flask, render_template, request
 import requests
 import ssl
@@ -14,13 +15,13 @@ def check_https(url):
 
 # 2. SSL/TLS Certificate Validation
 def check_ssl_certificate(url):
-    hostname = urlparse(url).hostn
+    hostname = urlparse(url).hostname
     context = ssl.create_default_context()
     with socket.create_connection((hostname, 443)) as sock:
         with context.wrap_socket(sock, server_hostname=hostname) as ssock:
             cert = ssock.getpeercert()
-            return cert  
-        
+            return cert
+
 # 3. IP Address and Geolocation
 def get_ip_geolocation(api_key, url):
     # Extract the hostname from the URL
@@ -30,10 +31,10 @@ def get_ip_geolocation(api_key, url):
         # Get the IP address of the hostname
         ip_address = socket.gethostbyname(hostname)
     except Exception as e:
-        return {"error": f"Error resolving IP address: {e}"
+        return {"error": f"Error resolving IP address: {e}"}
 
     # IPStack API endpoint
-    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}
+    api_url = f"https://api.ipstack.com/{ip_address}?access_key={api_key}"
 
     try:
         # API request
@@ -73,7 +74,7 @@ def check_url_reputation(key, url_to_check):
             "clientVersion": "1.0"
         },
         "threatInfo": {
-            "threatTypes": ["MALWARE", "SOCIAL_ENGINEERING", "UNWANTED_SOFTWARE", "POTENTIALLY_HARMFUL_APPLICATION"],       
+            "threatTypes": ["MALWARE", "SOCIAL_ENGINEERING", "UNWANTED_SOFTWARE", "POTENTIALLY_HARMFUL_APPLICATION"],
             "platformTypes": ["ANY_PLATFORM"],
             "threatEntryTypes": ["URL"],
             "threatEntries": [
@@ -86,15 +87,10 @@ def check_url_reputation(key, url_to_check):
 
     response = requests.post(url, headers=headers, json=payload, params=params)
 
-    # return"Status Code:", response.status_code)
     if response.status_code == 200:
-        return "Response JSON:", response.json()
+        return response.json()
     else:
-        return "Error:", response.text
-
-
-
-
+        return {"error": response.text}
 
 def analyze_single_website(results):
     """
@@ -104,7 +100,7 @@ def analyze_single_website(results):
     :return: Generated analysis from ChatGPT.
     """
 
-    #OpenAI API Key
+    # OpenAI API Key
     openai.api_key = "OPENAI_API_KEY"
     prompt = f"""
     Analyze the safety and security of the following website based on the provided details:
@@ -120,12 +116,11 @@ def analyze_single_website(results):
     Your analysis must be clear, professional, and concise but elaborate enough to provide a 250-word assessment.
     """
 
-
     response = openai.ChatCompletion.create(
-        model="gpt-4o",
+        model="gpt-4",
         messages=[
             {"role": "system", "content": "You are a security expert providing detailed analysis of website safety."},
-                {"role": "user", "content": prompt}
+            {"role": "user", "content": prompt}
         ],
         max_tokens=500
     )
@@ -148,38 +143,38 @@ def get_domain_age(api_key, url):
             return f"Error fetching domain info: {response.status_code}"
     except Exception as e:
         return f"Error: {str(e)}"
-    
+
 def analysis(url):
-        results = {}
-     #HTTPS Check
-        results["https_check"] = check_https(url)
+    results = {}
+    # HTTPS Check
+    results["https_check"] = check_https(url)
 
-        #SSL Certificate Validation
-        try:
-            results["ssl_certificate"] = check_ssl_certificate(url)
-        except Exception as e:
-            results["ssl_certificate"] = {"error": str(e)}
+    # SSL Certificate Validation
+    try:
+        results["ssl_certificate"] = check_ssl_certificate(url)
+    except Exception as e:
+        results["ssl_certificate"] = {"error": str(e)}
 
-        #Geolocation Check
-        try:
-            api_key = "IPSTACK_API_KEY"
-            results["geolocation"] = get_ip_geolocation(api_key, url)
-        except Exception as e:
-            results["geolocation"] = {"error": str(e)}
+    # Geolocation Check
+    try:
+        api_key = "IPSTACK_API_KEY"
+        results["geolocation"] = get_ip_geolocation(api_key, url)
+    except Exception as e:
+        results["geolocation"] = {"error": str(e)}
 
-        #URL Reputation Check
-        try:
-            key = "GOOGLE_SAFE_BROWSING_URL_API"
-            results["url_reputation"] = check_url_reputation(key, url)
-        except Exception as e:
-            results["url_reputation"] = {"error": str(e)}
+    # URL Reputation Check
+    try:
+        key = "GOOGLE_SAFE_BROWSING_URL_API"
+        results["url_reputation"] = check_url_reputation(key, url)
+    except Exception as e:
+        results["url_reputation"] = {"error": str(e)}
 
-        #ChatGPT Analysis
-        chatgpt_analysis = analyze_single_website(results)
+    # ChatGPT Analysis
+    chatgpt_analysis = analyze_single_website(results)
 
-        return chatgpt_analysis, results
+    return chatgpt_analysis, results
 
-def comparitive_analysis(chatgpt_analysis1, chatgpt_analysis2, results1, results2):
+def comparative_analysis(chatgpt_analysis1, chatgpt_analysis2, results1, results2):
     """
     Generate a comparative analysis of two URLs using ChatGPT.
 
@@ -221,12 +216,11 @@ def comparitive_analysis(chatgpt_analysis1, chatgpt_analysis2, results1, results
 
     return response['choices'][0]['message']['content']
 
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         url = request.form.get("url")
-        if url is not None:
+        if url:
             # Single website analysis
             chatgpt_analysis, results = analysis(url)
             return render_template("results.html", url=url, results=results, chatgpt_analysis=chatgpt_analysis)
@@ -239,7 +233,7 @@ def index():
             url2_analysis, results2 = analysis(url2)
 
             # Generate comparative analysis
-            chatgpt_comparative_analysis = comparitive_analysis(url1_analysis, url2_analysis, results1, results2)
+            chatgpt_comparative_analysis = comparative_analysis(url1_analysis, url2_analysis, results1, results2)
 
             return render_template(
                 "results.html",
@@ -252,7 +246,6 @@ def index():
 
     return render_template("index.html")
 
-
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
+```
