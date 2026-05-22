@@ -4,6 +4,7 @@ import ssl
 import socket
 from urllib.parse import urlparse
 import openai
+import os
 
 app = Flask(__name__)
 
@@ -14,7 +15,7 @@ def check_https(url):
 
 # 2. SSL/TLS Certificate Validation
 def check_ssl_certificate(url):
-    hostname = urlparse(url).hostn
+    hostname = urlparse(url).hostname
     context = ssl.create_default_context()
     with socket.create_connection((hostname, 443)) as sock:
         with context.wrap_socket(sock, server_hostname=hostname) as ssock:
@@ -30,10 +31,10 @@ def get_ip_geolocation(api_key, url):
         # Get the IP address of the hostname
         ip_address = socket.gethostbyname(hostname)
     except Exception as e:
-        return {"error": f"Error resolving IP address: {e}"
+        return {"error": f"Error resolving IP address: {e}"}
 
     # IPStack API endpoint
-    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}
+    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}"
 
     try:
         # API request
@@ -92,10 +93,6 @@ def check_url_reputation(key, url_to_check):
     else:
         return "Error:", response.text
 
-
-
-
-
 def analyze_single_website(results):
     """
     Generates an analysis of a single website using OpenAI's ChatGPT API.
@@ -104,8 +101,8 @@ def analyze_single_website(results):
     :return: Generated analysis from ChatGPT.
     """
 
-    #OpenAI API Key
-    openai.api_key = "OPENAI_API_KEY"
+    # OpenAI API Key
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     prompt = f"""
     Analyze the safety and security of the following website based on the provided details:
 
@@ -119,7 +116,6 @@ def analyze_single_website(results):
 
     Your analysis must be clear, professional, and concise but elaborate enough to provide a 250-word assessment.
     """
-
 
     response = openai.ChatCompletion.create(
         model="gpt-4o",
@@ -162,14 +158,14 @@ def analysis(url):
 
         #Geolocation Check
         try:
-            api_key = "IPSTACK_API_KEY"
+            api_key = os.getenv("IPSTACK_API_KEY")
             results["geolocation"] = get_ip_geolocation(api_key, url)
         except Exception as e:
             results["geolocation"] = {"error": str(e)}
 
         #URL Reputation Check
         try:
-            key = "GOOGLE_SAFE_BROWSING_URL_API"
+            key = os.getenv("GOOGLE_SAFE_BROWSING_URL_API")
             results["url_reputation"] = check_url_reputation(key, url)
         except Exception as e:
             results["url_reputation"] = {"error": str(e)}
@@ -189,7 +185,7 @@ def comparitive_analysis(chatgpt_analysis1, chatgpt_analysis2, results1, results
     :param results2: Results dictionary for URL 2
     :return: Comparative analysis as a string
     """
-    openai.api_key = "OPENAI_API_KEY"
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     prompt = f"""
     Compare the safety and security of the following two websites based on their analyses and results:
 
