@@ -14,7 +14,7 @@ def check_https(url):
 
 # 2. SSL/TLS Certificate Validation
 def check_ssl_certificate(url):
-    hostname = urlparse(url).hostn
+    hostname = urlparse(url).hostname
     context = ssl.create_default_context()
     with socket.create_connection((hostname, 443)) as sock:
         with context.wrap_socket(sock, server_hostname=hostname) as ssock:
@@ -30,10 +30,10 @@ def get_ip_geolocation(api_key, url):
         # Get the IP address of the hostname
         ip_address = socket.gethostbyname(hostname)
     except Exception as e:
-        return {"error": f"Error resolving IP address: {e}"
+        return {"error": f"Error resolving IP address: {e}"}
 
     # IPStack API endpoint
-    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}
+    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}"
 
     try:
         # API request
@@ -86,15 +86,10 @@ def check_url_reputation(key, url_to_check):
 
     response = requests.post(url, headers=headers, json=payload, params=params)
 
-    # return"Status Code:", response.status_code)
     if response.status_code == 200:
         return "Response JSON:", response.json()
     else:
         return "Error:", response.text
-
-
-
-
 
 def analyze_single_website(results):
     """
@@ -119,7 +114,6 @@ def analyze_single_website(results):
 
     Your analysis must be clear, professional, and concise but elaborate enough to provide a 250-word assessment.
     """
-
 
     response = openai.ChatCompletion.create(
         model="gpt-4o",
