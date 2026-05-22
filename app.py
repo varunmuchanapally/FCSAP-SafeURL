@@ -30,10 +30,10 @@ def get_ip_geolocation(api_key, url):
         # Get the IP address of the hostname
         ip_address = socket.gethostbyname(hostname)
     except Exception as e:
-        return {"error": f"Error resolving IP address: {e}"
+        return {"error": f"Error resolving IP address: {e}"}
 
     # IPStack API endpoint
-    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}
+    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}"
 
     try:
         # API request
