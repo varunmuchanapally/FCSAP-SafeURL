@@ -14,7 +14,7 @@ def check_https(url):
 
 # 2. SSL/TLS Certificate Validation
 def check_ssl_certificate(url):
-    hostname = urlparse(url).hostn
+    hostname = urlparse(url).hostname
     context = ssl.create_default_context()
     with socket.create_connection((hostname, 443)) as sock:
         with context.wrap_socket(sock, server_hostname=hostname) as ssock:
@@ -30,10 +30,10 @@ def get_ip_geolocation(api_key, url):
         # Get the IP address of the hostname
         ip_address = socket.gethostbyname(hostname)
     except Exception as e:
-        return {"error": f"Error resolving IP address: {e}"
+        return {"error": f"Error resolving IP address: {e}"}
 
     # IPStack API endpoint
-    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}
+    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}"
 
     try:
         # API request
@@ -255,4 +255,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
