@@ -14,7 +14,7 @@ def check_https(url):
 
 # 2. SSL/TLS Certificate Validation
 def check_ssl_certificate(url):
-    hostname = urlparse(url).hostn
+    hostname = urlparse(url).hostname
     context = ssl.create_default_context()
     with socket.create_connection((hostname, 443)) as sock:
         with context.wrap_socket(sock, server_hostname=hostname) as ssock:
@@ -24,16 +24,16 @@ def check_ssl_certificate(url):
 # 3. IP Address and Geolocation
 def get_ip_geolocation(api_key, url):
     # Extract the hostname from the URL
-    hostname = url.split("//")[-1].split("/")[0]
+    hostname = urlparse(url).hostname
 
     try:
         # Get the IP address of the hostname
         ip_address = socket.gethostbyname(hostname)
     except Exception as e:
-        return {"error": f"Error resolving IP address: {e}"
+        return {"error": f"Error resolving IP address: {e}"}
 
     # IPStack API endpoint
-    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}
+    api_url = f"http://api.ipstack.com/{ip_address}?access_key={api_key}"
 
     try:
         # API request
@@ -135,7 +135,7 @@ def get_domain_age(api_key, url):
     """
     Get the registration age of a domain using Whois API.
     """
-    domain = url.split("//")[-1].split("/")[0]
+    domain = urlparse(url).hostname
     api_url = f"https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey={api_key}&domainName={domain}&outputFormat=JSON"
 
     try:
